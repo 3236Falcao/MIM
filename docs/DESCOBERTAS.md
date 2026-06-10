@@ -51,3 +51,15 @@ Este documento registra descobertas conceituais do projeto. Cada descoberta deve
 **Descrição:** A memória é mais importante que a agenda. A agenda organiza o presente. A memória organiza o futuro.
 
 **Impacto no projeto:** O campo `memoria_futura` tornou-se central. A inbox, os relatórios e o roadmap passaram a priorizar preservação de contexto e recuperação futura, não apenas planejamento imediato.
+
+## Descoberta 06
+
+**Data:** 2026-06-10
+
+**Título:** O Modelo ECO de Registro Pedagógico
+
+**Descrição:** Os registros pedagógicos exigem um protocolo próprio. Surgiu então o Modelo ECO de Registro Pedagógico, estruturando o desenvolvimento da aula, as evidências de aprendizagem, as intervenções realizadas, a síntese investigativa e a memória futura.
+
+Essa descoberta marca a transição do MIM de um sistema de registros genéricos para uma memória pedagógica investigativa. Nem toda experiência docente pode ser reduzida a descrições livres; algumas exigem estruturas que permitam identificar padrões, acompanhar estudantes ao longo do tempo e orientar intervenções futuras.
+
+**Impacto no projeto:** O Modelo ECO transforma a prática cotidiana do professor em evidências organizadas, favorecendo a reflexão profissional, a continuidade das ações pedagógicas e a construção de conhecimento sobre a própria prática.
