@@ -1,67 +1,114 @@
 # Roadmap do MIM
 
-O MIM caminha para se tornar uma prótese cognitiva local baseada em sistemas da vida, memória contextual e interpretação ecológica da experiência.
+Este documento descreve planos futuros. O histórico do que já foi feito fica em `CHANGELOG.md`.
 
-## Direção Conceitual
+## v0.5 - Relatórios por Sistema
 
-O projeto usa a teoria bioecológica de Bronfenbrenner como referência: a vida de uma pessoa é atravessada por sistemas interdependentes. Trabalho, família, saúde, estudos, espiritualidade, escrita e projetos não devem ser analisados como listas isoladas de tarefas.
+Objetivo: gerar sínteses por sistema da vida.
 
-## Próximos Passos
+Entregas planejadas:
 
-### Módulo ECO
-
-Objetivo: interpretar registros a partir dos sistemas da vida.
-
-Possíveis funções:
-
-- identificar padrões por sistema
-- apontar tensões recorrentes
-- detectar sobrecarga
-- sugerir foco por sistema
-- relacionar registros rápidos com memórias futuras
-- gerar sínteses semanais
-
-### Ciclo Observar, Interpretar, Decidir, Agir, Memorizar
-
-Objetivo: transformar o diário em um ciclo de apoio cognitivo.
-
-Possíveis funções:
-
-- Observar: capturar registros rápidos e estruturados
-- Interpretar: encontrar padrões e relações
-- Decidir: destacar decisões importantes
-- Agir: sugerir próximas ações
-- Memorizar: criar lembretes e memórias futuras
-
-### Relatórios
-
-Melhorias possíveis:
-
-- relatório semanal
 - relatório por sistema
-- relatório de aulas
-- relatório de memória futura
-- relatório de padrões recorrentes
+- contagem de registros por sistema
+- aprendizados por sistema
+- memórias futuras por sistema
+- melhor recuperação de contexto por área da vida
 
-### Inbox Universal
+## v0.6 - Relatório Semanal
 
-Melhorias possíveis:
+Objetivo: ampliar a visão temporal do MIM.
+
+Entregas planejadas:
+
+- síntese semanal
+- decisões recorrentes
+- padrões de sobrecarga
+- sistemas negligenciados
+- aprendizados importantes da semana
+
+## v0.7 - Inbox Avançada
+
+Objetivo: tornar a inbox mais robusta.
+
+Entregas planejadas:
 
 - múltiplos registros estruturados no mesmo arquivo
-- status de processamento por item
 - arquivo de erros da inbox
+- processamento parcial
 - prévia antes de salvar
-- comandos rápidos para consultar sistemas
+- mensagens de erro mais acionáveis
 
-### Persistência
+## v0.8 - Módulo ECO Inicial
 
-Melhorias possíveis:
+Objetivo: criar interpretação ecológica inicial.
 
-- separar registros por data
-- exportar para Markdown
-- exportar para CSV
-- criar backups locais
+Entregas planejadas:
 
-## Princípio de Produto
+- análise de padrões por sistema
+- detecção de tensões
+- hipóteses de intervenção
+- sínteses orientadas pelo ciclo OIDA-M
+- primeiros indicadores de saúde sistêmica
 
-O MIM deve continuar simples, local e versionável. O foco é preservar autonomia cognitiva, não criar dependência de plataformas externas.
+## Melhorias Técnicas Planejadas
+
+- separar responsabilidades de `main.py` em módulos menores
+- criar camada de serviço para inbox
+- criar camada de serviço para relatórios
+- criar backups locais de `data/registros.json`
+- considerar exportação em Markdown ou CSV
+- manter compatibilidade com registros antigos
+
+## Critérios de Maturidade
+
+O MIM deve amadurecer preservando estes critérios:
+
+- dados pessoais locais e privados
+- baixa fricção para capturar registros
+- compatibilidade com registros antigos
+- relatórios úteis para decisão
+- recuperação eficiente de memória futura
+- testes cobrindo fluxos críticos
+- evolução conceitual sem perder simplicidade operacional
+
+## Fases Futuras
+
+### Fase 1 - Fundação
+
+Status: em andamento.
+
+Foco:
+
+- diário
+- experiências
+- inbox
+- relatórios diários
+- documentação
+
+### Fase 2 - Organização
+
+Foco:
+
+- relatórios por sistema
+- relatórios semanais
+- maior separação interna do código
+- inbox mais robusta
+
+### Fase 3 - Interpretação
+
+Foco:
+
+- Módulo ECO
+- padrões
+- hipóteses
+- alertas
+- saúde sistêmica
+
+### Fase 4 - Sabedoria Operacional
+
+Foco:
+
+- transformar memória acumulada em orientação prática
+- apoiar decisões
+- sugerir intervenções
+- fortalecer continuidade entre experiência e ação

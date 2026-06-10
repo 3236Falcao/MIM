@@ -1,16 +1,18 @@
 # Changelog do MIM
 
+Este documento registra apenas mudanças já realizadas no projeto.
+
 ## v0.4
 
 - Adicionada inbox universal.
-- Adicionado modo de registro avulso rápido.
-- Adicionado modo de registro estruturado completo.
-- Adicionados modelos em `inbox/modelos.txt`.
-- Relatórios diários passaram a mostrar origem do registro:
-  - `inbox_rapida`
-  - `inbox_estruturada`
-  - `registro_manual`
-- Registros de aula passaram a aceitar campos pedagógicos:
+- Adicionado modo de registro rápido.
+- Adicionado modo de registro estruturado.
+- Criados modelos em `inbox/modelos.txt`.
+- Adicionado processamento da inbox pela opção `7` do menu.
+- Adicionado campo `origem` para registros vindos da inbox.
+- Adicionado campo `processado` para registros vindos da inbox.
+- Relatórios passaram a exibir registros rápidos e estruturados.
+- Registros de aula passaram a exibir campos pedagógicos:
   - disciplina
   - turma
   - tema
@@ -20,15 +22,17 @@
   - descobertas
   - hipótese pedagógica
   - intervenção futura
-- Mantida compatibilidade com registros anteriores.
+- Criados testes para os fluxos da inbox.
 
 ## v0.3
 
 - Adicionado conceito de sistemas da vida.
 - Adicionado conceito de tipo de registro.
-- Adicionadas experiências com sistema, tipo, título, descrição, impacto, aprendizado e memória futura.
+- Criado registro de experiências.
 - Adicionada consulta por sistema.
-- Adicionado suporte inicial para registros de aula.
+- Adicionado suporte inicial para registro de aula.
+- Relatório diário passou a exibir experiências.
+- Criados testes para sistemas, tipos, registros de aula e consulta.
 
 ## v0.2
 
@@ -38,12 +42,18 @@
 - Adicionado foco único.
 - Adicionada decisão mais importante do dia.
 - Adicionado aprendizado principal.
-- Adicionada memória para 30 dias.
+- Adicionado campo de memória para 30 dias.
 - Adicionado conselho para amanhã.
+- Relatórios passaram a incluir novos campos.
+- Criados testes para os novos campos.
 
 ## v0.1
 
 - Criada estrutura inicial do projeto.
+- Criado `main.py`.
+- Criado `data/registros.json`.
+- Criado `reports/relatorio_diario.txt`.
+- Criada pasta `tests/`.
 - Adicionado registro de manhã.
 - Adicionado registro de noite.
 - Adicionada visualização de registros.

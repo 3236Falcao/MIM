@@ -1,12 +1,31 @@
 # Manual do MIM v0.4
 
-O MIM é uma prótese cognitiva local: um diário inteligente para registrar experiências, organizar sistemas da vida e preservar memórias úteis para decisões futuras.
+Este documento explica como usar o MIM no dia a dia.
 
-Nesta versão, o MIM funciona como uma inbox universal. Ele aceita registros rápidos e registros estruturados, salva tudo em JSON e gera relatórios diários em texto.
+## Como Executar
+
+Na raiz do projeto:
+
+```bash
+python3 main.py
+```
+
+Menu atual:
+
+```text
+1. Registrar manhã
+2. Registrar noite
+3. Ver registros
+4. Gerar relatório diário
+5. Registrar experiência
+6. Consultar sistema
+7. Processar inbox
+8. Sair
+```
 
 ## Sistemas da Vida
 
-O MIM organiza experiências por sistemas:
+Ao registrar experiências, escolha um dos sistemas aceitos:
 
 - TRABALHO
 - FAMILIA
@@ -16,11 +35,98 @@ O MIM organiza experiências por sistemas:
 - PROJETOS
 - SAUDE
 
-Essa organização se inspira na teoria bioecológica de Bronfenbrenner: a vida não acontece em tarefas isoladas, mas em sistemas relacionados. Cada registro pode revelar tensões, oportunidades, padrões e necessidades dentro de um sistema.
+## Tipos de Registro
 
-## Registros Rápidos
+As experiências aceitam estes tipos:
 
-Use registros rápidos quando a prioridade for capturar algo sem interromper o fluxo do dia.
+- EVENTO
+- REFLEXAO
+- PLANEJAMENTO
+- AULA
+- IDEIA
+
+## Registros de Manhã e Noite
+
+Use `1. Registrar manhã` para registrar:
+
+- texto livre do período
+- tipo de dia
+- estado físico, mental e emocional
+- até três prioridades
+- foco único
+- memória para 30 dias
+
+Use `2. Registrar noite` para registrar:
+
+- texto livre do período
+- decisão importante
+- aprendizado principal
+- conselho para amanhã
+
+## Registrar Experiência Manualmente
+
+Use `5. Registrar experiência` para salvar uma experiência com:
+
+- sistema
+- tipo de registro
+- título
+- descrição
+- impacto
+- aprendizado
+- memória futura
+
+Se o tipo for `AULA`, o menu interativo também pede:
+
+- disciplina
+- tema
+- objetivo
+- evidências
+- descobertas
+- hipótese pedagógica
+- intervenção futura
+
+Observação: na v0.4, o registro manual interativo de aula não pede `turma` nem `o que aconteceu`. Esses campos existem no registro estruturado pela inbox.
+
+## Consultar Sistema
+
+Use `6. Consultar sistema` para listar registros de experiência filtrados por sistema da vida.
+
+## Gerar Relatório Diário
+
+Use `4. Gerar relatório diário`.
+
+O relatório é salvo em:
+
+```text
+reports/relatorio_diario.txt
+```
+
+Ele inclui registros de diário e experiências da data atual.
+
+## Inbox Universal
+
+A inbox fica em:
+
+```text
+inbox/inbox.txt
+```
+
+Ela aceita:
+
+- registros rápidos
+- um registro estruturado
+
+Depois de preencher a inbox, execute o MIM e escolha:
+
+```text
+7. Processar inbox
+```
+
+Se não houver erros, os registros são salvos em `data/registros.json` e a inbox é limpa.
+
+## Registro Rápido
+
+Use registro rápido para capturar uma ideia ou acontecimento sem preencher um formulário.
 
 Formato:
 
@@ -34,14 +140,35 @@ Exemplos:
 IDEIA: O MIM deve organizar sistemas, não tarefas.
 FAMILIA: Samuel já está melhor.
 AULA: A turma respondeu melhor ao trabalho em duplas.
+TRABALHO: Preciso revisar o planejamento semanal.
+ESCRITA: Ideia para capítulo do livro.
+SAUDE: Preciso descansar mais.
+FE: Reflexão sobre disciplina espiritual.
+```
+
+Também funciona sem dois-pontos:
+
+```text
 TRABALHO Preciso revisar o planejamento semanal.
 ```
 
-Se não houver dois-pontos, o MIM usa a primeira palavra como palavra-chave e o restante como descrição.
+Nesse caso, a primeira palavra é tratada como palavra-chave e o restante como descrição.
 
-## Registros Estruturados
+## Palavras-Chave Rápidas
 
-Use registros estruturados quando a experiência exigir mais contexto.
+- IDEIA -> PROJETOS / IDEIA
+- AULA -> TRABALHO / AULA
+- TRABALHO -> TRABALHO / EVENTO
+- FAMILIA ou FAMÍLIA -> FAMILIA / EVENTO
+- ESCRITA -> ESCRITA / IDEIA
+- SAUDE ou SAÚDE -> SAUDE / EVENTO
+- FE ou FÉ -> ESPIRITUALIDADE / REFLEXAO
+- ESTUDOS -> ESTUDOS / REFLEXAO
+- MIM -> PROJETOS / IDEIA
+
+## Registro Estruturado
+
+Use registro estruturado quando o contexto precisa ser preservado com mais precisão.
 
 Formato geral:
 
@@ -56,7 +183,19 @@ Formato geral:
 [MEMÓRIA FUTURA]:
 ```
 
-Para aulas, use também os campos pedagógicos:
+Campos obrigatórios gerais:
+
+- SISTEMA
+- TIPO
+- TÍTULO
+- MEMÓRIA FUTURA
+- DESCRIÇÃO ou O QUE ACONTECEU
+
+`DATA` é opcional. Quando usada, deve seguir o formato `AAAA-MM-DD`.
+
+## Registro Estruturado de Aula
+
+Para `AULA`, use também:
 
 ```text
 [DISCIPLINA]:
@@ -70,32 +209,27 @@ Para aulas, use também os campos pedagógicos:
 [INTERVENÇÃO FUTURA]:
 ```
 
-## Inbox Universal
+Campos obrigatórios adicionais para `AULA`:
 
-A inbox fica em:
+- DISCIPLINA
+- TURMA
+- TEMA
+- EVIDÊNCIAS
+- INTERVENÇÃO FUTURA
+
+## Modelos Prontos
+
+Os modelos ficam em:
 
 ```text
-inbox/inbox.txt
+inbox/modelos.txt
 ```
 
-Escreva um registro rápido ou um modelo estruturado nesse arquivo. Depois rode o programa e escolha a opção de processar inbox.
+Use esse arquivo como referência para preencher a inbox.
 
-Quando o processamento dá certo, o registro é salvo em `data/registros.json` e a inbox é limpa.
+## Limitações de Uso na v0.4
 
-## Ciclo Cognitivo
-
-O MIM organiza a memória prática pelo ciclo:
-
-1. Observar
-2. Interpretar
-3. Decidir
-4. Agir
-5. Memorizar
-
-O objetivo não é apenas guardar acontecimentos, mas transformar experiências em memória operacional para escolhas futuras.
-
-## Módulo ECO
-
-O Módulo ECO é a direção conceitual do MIM para interpretar registros dentro dos sistemas da vida. ECO significa observar a experiência no contexto ecológico da pessoa: casa, trabalho, saúde, espiritualidade, escrita, estudos e projetos.
-
-Na v0.4, o ECO ainda é uma camada conceitual. A base técnica já existe nos campos `sistema`, `tipo_registro`, `impacto`, `aprendizado` e `memoria_futura`.
+- A inbox aceita vários registros rápidos, um por linha.
+- A inbox aceita apenas um registro estruturado por processamento.
+- Se houver erro no processamento, a inbox não é limpa.
+- Prévia antes de salvar, processamento parcial estruturado e arquivo de erros ainda são recursos planejados.
