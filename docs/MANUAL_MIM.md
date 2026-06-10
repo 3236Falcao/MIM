@@ -21,6 +21,7 @@ Menu atual:
 6. Consultar sistema
 7. Processar inbox
 8. Sair
+9. Síntese ECO do dia
 ```
 
 ## Sistemas da Vida
@@ -102,6 +103,19 @@ reports/relatorio_diario.txt
 ```
 
 Ele inclui registros de diário e experiências da data atual.
+
+## Síntese ECO do Dia
+
+Use `9. Síntese ECO do dia`.
+
+A síntese lê os registros da data atual e mostra:
+
+- quantidade de experiências registradas
+- sistemas envolvidos
+- aprendizados encontrados
+- memórias futuras registradas
+
+Se não houver registros no dia, o MIM informa isso no terminal.
 
 ## Inbox Universal
 

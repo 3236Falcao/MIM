@@ -505,6 +505,54 @@ def gerar_relatorio_diario(caminho_dados=DATA_FILE, caminho_relatorio=REPORT_FIL
     return relatorio
 
 
+def gerar_sintese_eco_do_dia(caminho_dados=DATA_FILE, data=None):
+    registros = carregar_registros(caminho_dados)
+
+    if data is None:
+        data = datetime.now().strftime("%Y-%m-%d")
+
+    registros_do_dia = [registro for registro in registros if registro["data"] == data]
+    if not registros_do_dia:
+        return f"Nenhum registro encontrado para esta data: {data}."
+
+    experiencias = [
+        registro
+        for registro in registros_do_dia
+        if registro.get("categoria") == "experiencia"
+    ]
+    sistemas = sorted({registro["sistema"] for registro in experiencias if registro.get("sistema")})
+    aprendizados = [registro["aprendizado"].strip() for registro in experiencias if registro.get("aprendizado", "").strip()]
+    memorias_futuras = [
+        registro["memoria_futura"].strip()
+        for registro in experiencias
+        if registro.get("memoria_futura", "").strip()
+    ]
+
+    linhas = [
+        "Síntese ECO do dia",
+        f"Data: {data}",
+        "",
+        "OBSERVAÇÕES",
+        f"- Quantidade de experiências registradas: {len(experiencias)}",
+        "- Sistemas envolvidos: " + (", ".join(sistemas) if sistemas else "nenhum"),
+        "",
+        "APRENDIZADOS",
+    ]
+
+    if aprendizados:
+        linhas.extend(f"- {aprendizado}" for aprendizado in aprendizados)
+    else:
+        linhas.append("- Nenhum aprendizado registrado.")
+
+    linhas.extend(["", "MEMÓRIAS FUTURAS"])
+    if memorias_futuras:
+        linhas.extend(f"- {memoria}" for memoria in memorias_futuras)
+    else:
+        linhas.append("- Nenhuma memória futura registrada.")
+
+    return "\n".join(linhas)
+
+
 def escolher_tipo_de_dia():
     print("Tipos de dia:")
     for indice, tipo in enumerate(TIPOS_DE_DIA, start=1):
@@ -637,6 +685,10 @@ def ver_registros():
     print(formatar_registros(registros))
 
 
+def mostrar_sintese_eco_do_dia():
+    print(gerar_sintese_eco_do_dia())
+
+
 def mostrar_menu():
     print("\nMIM v0.4 - Diario inteligente local")
     print("1. Registrar manhã")
@@ -647,6 +699,7 @@ def mostrar_menu():
     print("6. Consultar sistema")
     print("7. Processar inbox")
     print("8. Sair")
+    print("9. Síntese ECO do dia")
 
 
 def main():
@@ -673,6 +726,8 @@ def main():
         elif opcao == "8":
             print("Saindo...")
             break
+        elif opcao == "9":
+            mostrar_sintese_eco_do_dia()
         else:
             print("Opção inválida. Tente novamente.")
 

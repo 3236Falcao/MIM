@@ -381,6 +381,118 @@ class TestMIM(unittest.TestCase):
             self.assertIn("O que aconteceu: A turma trabalhou melhor em pares.", relatorio)
             self.assertIn("Hipótese pedagógica: Colaboração diminui insegurança.", relatorio)
 
+    def test_sintese_eco_do_dia_lista_observacoes_aprendizados_e_memorias(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            caminho_dados = Path(temp_dir) / "registros.json"
+            registros = [
+                {
+                    "categoria": "experiencia",
+                    "sistema": "TRABALHO",
+                    "tipo_registro": "AULA",
+                    "titulo": "Trabalho em duplas",
+                    "descricao": "A turma trabalhou melhor em pares.",
+                    "impacto": "Mais participação.",
+                    "aprendizado": "Duplas reduzem bloqueios.",
+                    "memoria_futura": "Preparar duplas previamente.",
+                    "data": "2026-06-05",
+                    "hora": "09:00:00",
+                },
+                {
+                    "categoria": "experiencia",
+                    "sistema": "FAMILIA",
+                    "tipo_registro": "EVENTO",
+                    "titulo": "Rotina da noite",
+                    "descricao": "A noite fluiu melhor.",
+                    "impacto": "Menos pressa.",
+                    "aprendizado": "Preparar itens antes ajuda.",
+                    "memoria_futura": "Manter rotina simples.",
+                    "data": "2026-06-05",
+                    "hora": "20:00:00",
+                },
+                {
+                    "periodo": "noite",
+                    "texto": "Registro comum do dia.",
+                    "data": "2026-06-05",
+                    "hora": "21:00:00",
+                },
+                {
+                    "categoria": "experiencia",
+                    "sistema": "PROJETOS",
+                    "tipo_registro": "IDEIA",
+                    "titulo": "Outro dia",
+                    "descricao": "Fora da data filtrada.",
+                    "impacto": "",
+                    "aprendizado": "Não deve aparecer.",
+                    "memoria_futura": "Não deve aparecer.",
+                    "data": "2026-06-04",
+                    "hora": "10:00:00",
+                },
+            ]
+            main.salvar_registros(registros, caminho_dados)
+
+            sintese = main.gerar_sintese_eco_do_dia(caminho_dados, data="2026-06-05")
+
+            self.assertIn("Síntese ECO do dia", sintese)
+            self.assertIn("OBSERVAÇÕES", sintese)
+            self.assertIn("Quantidade de experiências registradas: 2", sintese)
+            self.assertIn("Sistemas envolvidos: FAMILIA, TRABALHO", sintese)
+            self.assertIn("APRENDIZADOS", sintese)
+            self.assertIn("Duplas reduzem bloqueios.", sintese)
+            self.assertIn("Preparar itens antes ajuda.", sintese)
+            self.assertIn("MEMÓRIAS FUTURAS", sintese)
+            self.assertIn("Preparar duplas previamente.", sintese)
+            self.assertIn("Manter rotina simples.", sintese)
+            self.assertNotIn("Não deve aparecer.", sintese)
+
+    def test_sintese_eco_do_dia_informa_quando_nao_ha_registros_no_dia(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            caminho_dados = Path(temp_dir) / "registros.json"
+            registros = [
+                {
+                    "categoria": "experiencia",
+                    "sistema": "PROJETOS",
+                    "tipo_registro": "IDEIA",
+                    "titulo": "Outro dia",
+                    "descricao": "Registro antigo.",
+                    "impacto": "",
+                    "aprendizado": "Fora da data.",
+                    "memoria_futura": "Fora da data.",
+                    "data": "2026-06-04",
+                    "hora": "10:00:00",
+                },
+            ]
+            main.salvar_registros(registros, caminho_dados)
+
+            sintese = main.gerar_sintese_eco_do_dia(caminho_dados, data="2026-06-05")
+
+            self.assertEqual(sintese, "Nenhum registro encontrado para esta data: 2026-06-05.")
+
+    def test_sintese_eco_do_dia_ignora_aprendizados_e_memorias_vazios(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            caminho_dados = Path(temp_dir) / "registros.json"
+            registros = [
+                {
+                    "categoria": "experiencia",
+                    "sistema": "PROJETOS",
+                    "tipo_registro": "IDEIA",
+                    "titulo": "Registro rápido",
+                    "descricao": "Ideia capturada rapidamente.",
+                    "impacto": "",
+                    "aprendizado": "",
+                    "memoria_futura": "   ",
+                    "data": "2026-06-05",
+                    "hora": "10:00:00",
+                },
+            ]
+            main.salvar_registros(registros, caminho_dados)
+
+            sintese = main.gerar_sintese_eco_do_dia(caminho_dados, data="2026-06-05")
+
+            self.assertIn("Quantidade de experiências registradas: 1", sintese)
+            self.assertIn("Sistemas envolvidos: PROJETOS", sintese)
+            self.assertIn("- Nenhum aprendizado registrado.", sintese)
+            self.assertIn("- Nenhuma memória futura registrada.", sintese)
+
 
 if __name__ == "__main__":
     unittest.main()
