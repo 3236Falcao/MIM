@@ -63,3 +63,33 @@ Este documento registra descobertas conceituais do projeto. Cada descoberta deve
 Essa descoberta marca a transição do MIM de um sistema de registros genéricos para uma memória pedagógica investigativa. Nem toda experiência docente pode ser reduzida a descrições livres; algumas exigem estruturas que permitam identificar padrões, acompanhar estudantes ao longo do tempo e orientar intervenções futuras.
 
 **Impacto no projeto:** O Modelo ECO transforma a prática cotidiana do professor em evidências organizadas, favorecendo a reflexão profissional, a continuidade das ações pedagógicas e a construção de conhecimento sobre a própria prática.
+
+## Descoberta 07
+
+**Data:** 2026-06-12
+
+**Título:** O ciclo ECO é investigativo e recorrente
+
+**Descrição:** A semana de 08/06/2026 a 12/06/2026 mostrou que o ciclo ECO não termina na intervenção. Cada intervenção produz novas evidências, que exigem adaptação metodológica e geram novas hipóteses investigativas. O ciclo observado foi: evidência, intervenção, nova evidência, adaptação e nova hipótese.
+
+**Impacto no projeto:** O MIM deve tratar registros pedagógicos como ciclos em continuidade, não como relatos isolados. Relatórios semanais precisam explicitar evidências, intervenções, efeitos percebidos, adaptações e hipóteses futuras.
+
+## Descoberta 08
+
+**Data:** 2026-06-12
+
+**Título:** A observação pedagógica antecede a intervenção
+
+**Descrição:** As experiências da semana indicaram que intervenções mais consistentes surgem quando o professor observa primeiro os ritmos, dificuldades, formas de participação e necessidades de mediação dos estudantes. A intervenção ganha qualidade quando responde a evidências reais da aula.
+
+**Impacto no projeto:** O MIM deve preservar a ordem investigativa do registro pedagógico: observar, registrar, interpretar e só então intervir. Essa ordem fortalece a função do sistema como memória profissional e instrumento de análise da prática docente.
+
+## Descoberta 09
+
+**Data:** 2026-06-12
+
+**Título:** O posicionamento do professor altera as evidências coletadas
+
+**Descrição:** A alternância entre circular pela sala e permanecer na mesa ampliou a observação individual dos estudantes. O posicionamento físico do professor influenciou diretamente a qualidade das evidências coletadas, tornando mais visíveis diferenças de autonomia, engajamento, cooperação e necessidade de apoio.
+
+**Impacto no projeto:** Os registros pedagógicos do MIM devem permitir anotar condições de observação e organização da aula, pois o ambiente, a circulação e a proximidade com os estudantes afetam as evidências disponíveis para análise.
