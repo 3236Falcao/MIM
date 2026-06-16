@@ -134,3 +134,42 @@ Essa descoberta marca a transição do MIM de um sistema de registros genéricos
 
 **Impacto no projeto:** O MIM e o EcoLeitor devem privilegiar o acompanhamento contínuo da escrita, produzindo relatórios semanais capazes de revelar tendências individuais e coletivas para orientar decisões pedagógicas.
 
+## Descoberta 14
+
+**Data:** 2026-06-16
+
+**Título:** O julgamento pedagógico permanece humano
+
+**Descrição:** Algoritmos podem sugerir padrões, níveis e justificativas, mas não substituem a interpretação contextual do professor. Aspectos emocionais, relacionais, situacionais e históricos influenciam a produção escrita e exigem sensibilidade pedagógica que ultrapassa a análise automática dos dados.
+
+**Impacto no projeto:** Toda classificação realizada pelo EcoLeitor deve ser apresentada como uma sugestão fundamentada, preservando ao professor a possibilidade de confirmar, revisar ou ajustar a decisão. O sistema deve apoiar a tomada de decisão pedagógica, e não automatizá-la integralmente.
+
+## Descoberta 15
+
+**Data:** 2026-06-16
+
+**Título:** O contexto de produção altera o significado da escrita observada
+
+**Descrição:** Uma mesma escrita pode representar processos cognitivos distintos dependendo das condições em que foi produzida. Escrever a partir da fala, da imagem, da memória ou da produção espontânea mobiliza competências diferentes e produz evidências pedagógicas específicas.
+
+**Impacto no projeto:** O EcoLeitor deve registrar o tipo de atividade em todas as coletas, distinguindo, por exemplo, ditado oral, associação imagem-escrita, banco de palavras e texto livre. Essa diferenciação evita comparações descontextualizadas e favorece interpretações mais prudentes sobre o desenvolvimento da escrita.
+
+## Descoberta 16
+
+**Data:** 2026-06-16
+
+**Título:** A heterogeneidade das hipóteses de escrita aparece claramente em atividades simples de associação imagem-escrita.
+
+**Descrição:** A primeira coleta real do EcoLeitor revelou a coexistência de diferentes níveis de escrita dentro da mesma turma. Mesmo em uma atividade breve e cotidiana, observou-se desde ausência de relação sonora até produções convencionais.
+
+**Impacto no projeto:** O EcoLeitor deve produzir relatórios que evidenciem perfis coletivos e orientem agrupamentos flexíveis e intervenções diferenciadas, evitando interpretações homogêneas do desenvolvimento da turma.
+
+## Descoberta 17
+
+**Data:** 2026-06-16
+
+**Título:** Atividades de associação imagem-escrita revelam potencialidades antes dos ditados formais.
+
+**Descrição:** A mediação por imagens permitiu identificar evidências relevantes sobre reconhecimento lexical, nomeação e hipóteses de escrita antes mesmo do início do piloto dos ditados orais.
+
+**Impacto no projeto:** O EcoLeitor deve considerar atividades de associação imagem-escrita como instrumentos legítimos de observação diagnóstica e acompanhamento pedagógico.
