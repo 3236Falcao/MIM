@@ -7,6 +7,8 @@ Este documento registra apenas mudanças já realizadas no projeto.
 - Adicionada inbox universal.
 - Adicionado modo de registro rápido.
 - Adicionado modo de registro estruturado.
+- Adicionado Comando ECO de Aula como formato pedagógico oficial.
+- A opção `7. Processar inbox` passou a mostrar prévia e pedir confirmação antes de salvar.
 - Criados modelos em `inbox/modelos.txt`.
 - Adicionado processamento da inbox pela opção `7` do menu.
 - Adicionado campo `origem` para registros vindos da inbox.

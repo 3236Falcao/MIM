@@ -136,7 +136,7 @@ Depois de preencher a inbox, execute o MIM e escolha:
 7. Processar inbox
 ```
 
-Se não houver erros, os registros são salvos em `data/registros.json` e a inbox é limpa.
+O MIM mostra a prévia do registro estruturado antes de salvar. Após a confirmação, os registros são salvos em `data/registros.json`, o JSON é validado pelo próprio carregamento do arquivo e a inbox é limpa.
 
 ## Registro Rápido
 
@@ -209,9 +209,66 @@ Campos obrigatórios gerais:
 
 ## Registro Estruturado de Aula
 
-Para `AULA`, use também:
+O formato pedagógico oficial é o Comando ECO de Aula.
 
 ```text
+# COMANDO ECO - REGISTRAR AULA
+
+Quero registrar um Caso Pedagógico ECO.
+
+Data:
+Disciplina:
+Turma:
+Tema:
+
+Desenvolvimento:
+(O que foi realizado?)
+
+Evidências:
+
+* Autônomos:
+* Com orientações:
+* Com ajuda direta:
+* Avanços observados:
+* Dificuldades persistentes:
+* Episódios significativos:
+
+Intervenções:
+(O que foi feito pedagogicamente e comportamentalmente?)
+
+Síntese investigativa:
+(O que esta aula ensinou sobre como os alunos aprendem?)
+
+Memória futura:
+(O que devo lembrar para as próximas aulas?)
+
+Salve como:
+categoria: experiencia
+sistema: TRABALHO
+tipo_registro: AULA
+origem: registro_eco
+```
+
+Campos obrigatórios adicionais para o Comando ECO:
+
+- DATA
+- DISCIPLINA
+- TURMA
+- TEMA
+- DESENVOLVIMENTO
+- INTERVENÇÕES
+- SÍNTESE INVESTIGATIVA
+- MEMÓRIA FUTURA
+
+## Modelo Estruturado Antigo de Aula
+
+O MIM ainda aceita o formato antigo com colchetes, para compatibilidade:
+
+```text
+[SISTEMA]: TRABALHO
+[TIPO]: AULA
+[TÍTULO]:
+[DATA]: AAAA-MM-DD
 [DISCIPLINA]:
 [TURMA]:
 [TEMA]:
@@ -221,15 +278,26 @@ Para `AULA`, use também:
 [DESCOBERTAS]:
 [HIPÓTESE PEDAGÓGICA]:
 [INTERVENÇÃO FUTURA]:
+[IMPACTO]:
+[APRENDIZADO]:
+[MEMÓRIA FUTURA]:
 ```
 
-Campos obrigatórios adicionais para `AULA`:
+## Modelo ECO de Registro Pedagógico
 
-- DISCIPLINA
-- TURMA
-- TEMA
-- EVIDÊNCIAS
-- INTERVENÇÃO FUTURA
+O Modelo ECO de Registro Pedagógico é a referência oficial do MIM para registrar aulas como experiências investigativas.
+
+Use este modelo quando a aula precisar preservar contexto, evidências de autonomia, intervenções, síntese investigativa e memória futura.
+
+Orientação de uso:
+
+- `DESENVOLVIMENTO` registra o que foi realizado.
+- `EVIDÊNCIAS` registra sinais concretos por grau de autonomia, avanços, dificuldades e episódios significativos.
+- `INTERVENÇÕES` registra o que foi feito pedagogicamente e comportamentalmente.
+- `SÍNTESE INVESTIGATIVA` registra o que a aula ensinou sobre como os alunos aprendem.
+- `MEMÓRIA FUTURA` registra o que o MIM deve preservar para orientar decisões posteriores.
+
+Este modelo não exige que a hipótese esteja correta. Ele existe para transformar a aula em observação investigativa e memória pedagógica reutilizável.
 
 ## Modelos Prontos
 
@@ -246,4 +314,4 @@ Use esse arquivo como referência para preencher a inbox.
 - A inbox aceita vários registros rápidos, um por linha.
 - A inbox aceita apenas um registro estruturado por processamento.
 - Se houver erro no processamento, a inbox não é limpa.
-- Prévia antes de salvar, processamento parcial estruturado e arquivo de erros ainda são recursos planejados.
+- Processamento parcial estruturado e arquivo de erros ainda são recursos planejados.

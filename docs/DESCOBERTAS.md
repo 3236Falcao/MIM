@@ -93,3 +93,44 @@ Essa descoberta marca a transição do MIM de um sistema de registros genéricos
 **Descrição:** A alternância entre circular pela sala e permanecer na mesa ampliou a observação individual dos estudantes. O posicionamento físico do professor influenciou diretamente a qualidade das evidências coletadas, tornando mais visíveis diferenças de autonomia, engajamento, cooperação e necessidade de apoio.
 
 **Impacto no projeto:** Os registros pedagógicos do MIM devem permitir anotar condições de observação e organização da aula, pois o ambiente, a circulação e a proximidade com os estudantes afetam as evidências disponíveis para análise.
+
+## Descoberta 10
+
+**Data:** 2026-06-16
+
+**Título:** A evidência antecede a classificação
+
+**Descrição:** A avaliação da escrita deve começar pela observação da produção da criança e pelo registro das evidências presentes em sua escrita. O nível não é o ponto de partida da análise, mas uma conclusão provisória construída a partir dos dados observados.
+
+**Impacto no projeto:** O EcoLeitor deve registrar inicialmente a palavra esperada e a escrita produzida pelo aluno. Somente após a análise das evidências deverá sugerir padrões, justificativas e níveis de escrita.
+
+## Descoberta 11
+
+**Data:** 2026-06-16
+
+**Título:** A prudência pedagógica reduz o risco de falsas conclusões
+
+**Descrição:** Em situações ambíguas, é mais seguro considerar que a aprendizagem ainda está em consolidação do que pressupor domínio já estabelecido. Revisar, retomar e intervir diante da dúvida favorece avanços consistentes, enquanto classificações precipitadas podem ocultar necessidades reais de acompanhamento.
+
+**Impacto no projeto:** O EcoLeitor deve adotar o Princípio da Prudência Pedagógica: na dúvida entre dois níveis, sugerir o nível inferior e apresentar ao professor a possibilidade de confirmar ou revisar a decisão.
+
+## Descoberta 12
+
+**Data:** 2026-06-16
+
+**Título:** O erro é uma evidência do percurso de aprendizagem
+
+**Descrição:** Produções consideradas incorretas revelam hipóteses de escrita, estratégias cognitivas e formas de compreensão do sistema alfabético. O erro deixa de representar apenas ausência de acerto e passa a constituir uma fonte relevante de informação pedagógica.
+
+**Impacto no projeto:** O EcoLeitor deve identificar padrões presentes nas escritas, gerar justificativas para as classificações sugeridas e propor intervenções coerentes com os indícios observados, evitando respostas dicotômicas entre "certo" e "errado".
+
+## Descoberta 13
+
+**Data:** 2026-06-16
+
+**Título:** Pequenas coletas frequentes revelam melhor o desenvolvimento da escrita
+
+**Descrição:** Registros breves e contínuos, realizados durante práticas cotidianas como o ditado diário, permitem identificar oscilações, avanços graduais e necessidades de intervenção que avaliações pontuais tendem a não evidenciar.
+
+**Impacto no projeto:** O MIM e o EcoLeitor devem privilegiar o acompanhamento contínuo da escrita, produzindo relatórios semanais capazes de revelar tendências individuais e coletivas para orientar decisões pedagógicas.
+

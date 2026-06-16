@@ -164,6 +164,10 @@ def criar_experiencia(
     processado=None,
     turma=None,
     o_que_aconteceu=None,
+    desenvolvimento=None,
+    evidencias_eco=None,
+    intervencoes=None,
+    sintese_investigativa=None,
 ):
     sistema = validar_sistema(sistema)
     tipo_registro = validar_tipo_de_registro(tipo_registro)
@@ -206,6 +210,10 @@ def criar_experiencia(
         descobertas,
         hipotese_pedagogica,
         intervencao_futura,
+        desenvolvimento,
+        evidencias_eco,
+        intervencoes,
+        sintese_investigativa,
     )
     if tipo_registro == "AULA" and any(campo is not None for campo in campos_aula):
         experiencia["aula"] = {
@@ -219,6 +227,18 @@ def criar_experiencia(
             "hipotese_pedagogica": (hipotese_pedagogica or "").strip(),
             "intervencao_futura": (intervencao_futura or "").strip(),
         }
+        if desenvolvimento is not None:
+            experiencia["aula"]["desenvolvimento"] = desenvolvimento.strip()
+        if evidencias_eco:
+            experiencia["aula"]["evidencias_eco"] = {
+                chave: valor.strip()
+                for chave, valor in evidencias_eco.items()
+                if valor and valor.strip()
+            }
+        if intervencoes is not None:
+            experiencia["aula"]["intervencoes"] = intervencoes.strip()
+        if sintese_investigativa is not None:
+            experiencia["aula"]["sintese_investigativa"] = sintese_investigativa.strip()
 
     return experiencia
 
@@ -281,6 +301,18 @@ def possui_campos_estruturados(mensagem):
     return bool(re.search(r"^\[[^\]]+\]:", mensagem, flags=re.MULTILINE))
 
 
+def possui_comando_eco_aula(mensagem):
+    texto = mensagem.strip()
+    if "COMANDO ECO" in texto.upper() and "REGISTRAR AULA" in texto.upper():
+        return True
+    campos_obrigatorios = ("Data:", "Disciplina:", "Turma:", "Tema:", "Desenvolvimento:")
+    return all(re.search(rf"^\s*{re.escape(campo)}", texto, flags=re.MULTILINE) for campo in campos_obrigatorios)
+
+
+def possui_registro_multilinha(conteudo):
+    return possui_campos_estruturados(conteudo) or possui_comando_eco_aula(conteudo)
+
+
 def normalizar_nome_campo(campo):
     sem_acentos = unicodedata.normalize("NFD", campo)
     sem_acentos = "".join(caractere for caractere in sem_acentos if unicodedata.category(caractere) != "Mn")
@@ -288,7 +320,26 @@ def normalizar_nome_campo(campo):
 
 
 def extrair_campos_estruturados(mensagem):
-    padrao = re.compile(r"^\[([^\]]+)\]:\s*(.*)$", flags=re.MULTILINE)
+    padrao = re.compile(r"^\[([^\]]+)\]:[ \t]*(.*)$", flags=re.MULTILINE)
+    matches = list(padrao.finditer(mensagem))
+    campos = {}
+
+    for indice, match in enumerate(matches):
+        nome = normalizar_nome_campo(match.group(1))
+        inicio = match.end(2)
+        fim = matches[indice + 1].start() if indice + 1 < len(matches) else len(mensagem)
+        primeira_linha = match.group(2).strip()
+        restante = mensagem[inicio:fim].strip()
+        valor = primeira_linha
+        if restante:
+            valor = f"{valor}\n{restante}".strip() if valor else restante
+        campos[nome] = valor.strip()
+
+    return campos
+
+
+def extrair_campos_rotulados(mensagem):
+    padrao = re.compile(r"^[ \t]*(?:[-*][ \t]*)?([^:\n]+):[ \t]*(.*)$", flags=re.MULTILINE)
     matches = list(padrao.finditer(mensagem))
     campos = {}
 
@@ -322,6 +373,95 @@ def campos_faltantes_estruturado(campos):
                 faltantes.append(campo)
 
     return faltantes
+
+
+def campos_faltantes_eco_aula(campos):
+    faltantes = []
+    for campo in (
+        "DATA",
+        "DISCIPLINA",
+        "TURMA",
+        "TEMA",
+        "DESENVOLVIMENTO",
+        "INTERVENCOES",
+        "SINTESE INVESTIGATIVA",
+        "MEMORIA FUTURA",
+    ):
+        if not campos.get(campo):
+            faltantes.append(campo)
+    return faltantes
+
+
+def resumo_evidencias_eco(evidencias):
+    rotulos = {
+        "autonomos": "Autônomos",
+        "com_orientacoes": "Com orientações",
+        "com_ajuda_direta": "Com ajuda direta",
+        "avancos_observados": "Avanços observados",
+        "dificuldades_persistentes": "Dificuldades persistentes",
+        "episodios_significativos": "Episódios significativos",
+    }
+    linhas = []
+    for chave, rotulo in rotulos.items():
+        valor = evidencias.get(chave, "").strip()
+        if valor:
+            linhas.append(f"{rotulo}: {valor}")
+    return "\n".join(linhas)
+
+
+def criar_registro_eco_aula(mensagem, data_hora=None):
+    campos = extrair_campos_rotulados(mensagem)
+    faltantes = campos_faltantes_eco_aula(campos)
+    if faltantes:
+        raise ValueError("Campos faltantes no Comando ECO de Aula: " + ", ".join(faltantes))
+
+    data_registro = datetime.strptime(campos["DATA"], "%Y-%m-%d")
+    if data_hora is not None:
+        data_registro = data_registro.replace(
+            hour=data_hora.hour,
+            minute=data_hora.minute,
+            second=data_hora.second,
+            microsecond=data_hora.microsecond,
+        )
+
+    evidencias_eco = {
+        "autonomos": campos.get("AUTONOMOS", ""),
+        "com_orientacoes": campos.get("COM ORIENTACOES", ""),
+        "com_ajuda_direta": campos.get("COM AJUDA DIRETA", ""),
+        "avancos_observados": campos.get("AVANCOS OBSERVADOS", ""),
+        "dificuldades_persistentes": campos.get("DIFICULDADES PERSISTENTES", ""),
+        "episodios_significativos": campos.get("EPISODIOS SIGNIFICATIVOS", ""),
+    }
+
+    sistema = campos.get("SISTEMA", "TRABALHO")
+    tipo_registro = campos.get("TIPO_REGISTRO") or campos.get("TIPO REGISTRO", "AULA")
+    origem = campos.get("ORIGEM", "registro_eco")
+    desenvolvimento = campos["DESENVOLVIMENTO"]
+    sintese = campos["SINTESE INVESTIGATIVA"]
+
+    return criar_experiencia(
+        sistema=sistema,
+        tipo_registro=tipo_registro,
+        titulo=f"{campos['DISCIPLINA']} - {campos['TEMA']}",
+        descricao=desenvolvimento,
+        impacto=campos.get("AVANCOS OBSERVADOS", ""),
+        aprendizado=sintese,
+        memoria_futura=campos["MEMORIA FUTURA"],
+        data_hora=data_registro,
+        origem=origem,
+        processado=True,
+        disciplina=campos["DISCIPLINA"],
+        turma=campos["TURMA"],
+        tema=campos["TEMA"],
+        o_que_aconteceu=desenvolvimento,
+        evidencias=resumo_evidencias_eco(evidencias_eco),
+        descobertas=sintese,
+        intervencao_futura=campos["INTERVENCOES"],
+        desenvolvimento=desenvolvimento,
+        evidencias_eco=evidencias_eco,
+        intervencoes=campos["INTERVENCOES"],
+        sintese_investigativa=sintese,
+    )
 
 
 def criar_registro_estruturado(mensagem, data_hora=None):
@@ -359,18 +499,20 @@ def criar_registro_estruturado(mensagem, data_hora=None):
 
 
 def processar_mensagem_inbox(mensagem, data_hora=None):
+    if possui_comando_eco_aula(mensagem):
+        return criar_registro_eco_aula(mensagem, data_hora)
     if possui_campos_estruturados(mensagem):
         return criar_registro_estruturado(mensagem, data_hora)
     return criar_registro_rapido(mensagem, data_hora)
 
 
-def processar_inbox(caminho_inbox=INBOX_FILE, caminho_dados=DATA_FILE, data_hora=None):
+def processar_inbox(caminho_inbox=INBOX_FILE, caminho_dados=DATA_FILE, data_hora=None, salvar=True):
     caminho_inbox = Path(caminho_inbox)
     conteudo = caminho_inbox.read_text(encoding="utf-8").strip() if caminho_inbox.exists() else ""
     if not conteudo:
         return {"salvos": [], "erros": []}
 
-    mensagens = [conteudo] if possui_campos_estruturados(conteudo) else conteudo.splitlines()
+    mensagens = [conteudo] if possui_registro_multilinha(conteudo) else conteudo.splitlines()
     registros = carregar_registros(caminho_dados)
     salvos = []
     erros = []
@@ -386,7 +528,7 @@ def processar_inbox(caminho_inbox=INBOX_FILE, caminho_dados=DATA_FILE, data_hora
             continue
         salvos.append(registro)
 
-    if salvos and not erros:
+    if salvar and salvos and not erros:
         registros.extend(salvos)
         salvar_registros(registros, caminho_dados)
         caminho_inbox.write_text("", encoding="utf-8")
@@ -457,6 +599,25 @@ def formatar_experiencia(registro):
         linhas.append(f"   - Descobertas: {aula.get('descobertas', '')}")
         linhas.append(f"   - Hipótese pedagógica: {aula.get('hipotese_pedagogica', '')}")
         linhas.append(f"   - Intervenção futura: {aula.get('intervencao_futura', '')}")
+        evidencias_eco = aula.get("evidencias_eco", {})
+        if evidencias_eco:
+            linhas.append("   - Evidências ECO:")
+            rotulos = (
+                ("autonomos", "Autônomos"),
+                ("com_orientacoes", "Com orientações"),
+                ("com_ajuda_direta", "Com ajuda direta"),
+                ("avancos_observados", "Avanços observados"),
+                ("dificuldades_persistentes", "Dificuldades persistentes"),
+                ("episodios_significativos", "Episódios significativos"),
+            )
+            for chave, rotulo in rotulos:
+                valor = evidencias_eco.get(chave, "")
+                if valor:
+                    linhas.append(f"      - {rotulo}: {valor}")
+        if aula.get("intervencoes"):
+            linhas.append(f"   - Intervenções: {aula['intervencoes']}")
+        if aula.get("sintese_investigativa"):
+            linhas.append(f"   - Síntese investigativa: {aula['sintese_investigativa']}")
 
     return linhas
 
@@ -674,10 +835,27 @@ def consultar_sistema_interativo():
 
 
 def processar_inbox_interativo():
-    resultado = processar_inbox()
+    resultado = processar_inbox(salvar=False)
     for erro in resultado["erros"]:
         print(f"Erro: {erro}")
+    if resultado["erros"] or not resultado["salvos"]:
+        print(f"Registros salvos: 0")
+        return
+
+    print("Prévia do registro estruturado:")
+    print(formatar_registros(resultado["salvos"]))
+    confirmar = input("Deseja salvar? [s/N] ").strip().lower()
+    if confirmar not in ("s", "sim"):
+        print("Registro não salvo.")
+        return
+
+    registros = carregar_registros()
+    registros.extend(resultado["salvos"])
+    salvar_registros(registros)
+    INBOX_FILE.write_text("", encoding="utf-8")
+    total = len(carregar_registros())
     print(f"Registros salvos: {len(resultado['salvos'])}")
+    print(f"Total de registros agora: {total}")
 
 
 def ver_registros():

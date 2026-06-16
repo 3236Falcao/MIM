@@ -1,4 +1,9 @@
 Relatorio Diario - MIM v0.4
-Data: 2026-06-05
+Data: 2026-06-09
 
-1. [2026-06-05 10:01:27] Manhã: Hoje acordei bem, mas de madrugada meu filho Samuel passou mal. Estava com a garganta e o ouvido inflamados. Lei ao médico e agora já está tudo bem. Já posso começar as atividades do dia.
+1. [2026-06-09 23:42:28] Experiência [PROJETOS / EVENTO]: MIM retomado no Linux
+   - Origem: registro_manual
+   - Descrição: Hoje recuperei o projeto MIM
+   - Impacto: Recuperei a continuidade do projeto MIM, confirmei que o Codex funciona no Linux e estabeleci uma base estável para retomar o desenvolvimento. Senti renovação, motivação e maior clareza sobre os próximos passos do sistema.
+   - Aprendizado: Pequenos avanços consistentes são mais eficazes do que tentar construir tudo de uma vez. A combinação entre orientação humana, execução do Codex e registro estruturado permite desenvolver o MIM de forma segura e sustentável.
+   - Memória futura: Continuar desenvolvendo o MIM em pequenos ciclos de melhoria, sempre validando na prática cada nova funcionalidade antes de avançar. Priorizar recursos que transformem registros em sínteses, recomendações e apoio real à tomada de decisão.

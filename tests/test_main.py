@@ -303,6 +303,81 @@ class TestMIM(unittest.TestCase):
         self.assertEqual(registro["aula"]["o_que_aconteceu"], "A turma trabalhou melhor em pares.")
         self.assertEqual(registro["aula"]["intervencao_futura"], "Preparar duplas previamente.")
 
+    def test_comando_eco_aula_completo(self):
+        mensagem = """
+# COMANDO ECO – REGISTRAR AULA
+
+Quero registrar um Caso Pedagógico ECO.
+
+Data: 2026-06-11
+Disciplina: Português
+Turma: 2º Ano
+Tema: Leitura coletiva
+
+Desenvolvimento:
+A turma realizou leitura coletiva e conversa orientada.
+
+Evidências:
+
+* Autônomos: Laura participou mais e leu com segurança.
+* Com orientações: Alguns alunos acompanharam melhor após marcações no texto.
+* Com ajuda direta: Maria precisou de apoio contínuo.
+* Avanços observados: A leitura coletiva ampliou a participação.
+* Dificuldades persistentes: Parte da turma ainda perde a sequência da leitura.
+* Episódios significativos: Um aluno ajudou o colega a localizar o trecho.
+
+Intervenções:
+Mediação da leitura, retomada de combinados e apoio individual.
+
+Síntese investigativa:
+A turma aprende melhor quando a leitura é compartilhada e guiada por pausas curtas.
+
+Memória futura:
+Retomar leitura coletiva com trechos menores.
+
+Salve como:
+categoria: experiencia
+sistema: TRABALHO
+tipo_registro: AULA
+origem: registro_eco
+"""
+
+        registro = main.criar_registro_eco_aula(
+            mensagem,
+            data_hora=datetime(2026, 6, 11, 15, 30, 0),
+        )
+
+        self.assertEqual(registro["categoria"], "experiencia")
+        self.assertEqual(registro["sistema"], "TRABALHO")
+        self.assertEqual(registro["tipo_registro"], "AULA")
+        self.assertEqual(registro["origem"], "registro_eco")
+        self.assertEqual(registro["data"], "2026-06-11")
+        self.assertEqual(registro["hora"], "15:30:00")
+        self.assertEqual(registro["titulo"], "Português - Leitura coletiva")
+        self.assertEqual(registro["aula"]["disciplina"], "Português")
+        self.assertEqual(registro["aula"]["turma"], "2º Ano")
+        self.assertEqual(registro["aula"]["evidencias_eco"]["autonomos"], "Laura participou mais e leu com segurança.")
+        self.assertEqual(registro["aula"]["intervencoes"], "Mediação da leitura, retomada de combinados e apoio individual.")
+        self.assertEqual(
+            registro["aprendizado"],
+            "A turma aprende melhor quando a leitura é compartilhada e guiada por pausas curtas.",
+        )
+        self.assertIn("Laura participou mais", registro["aula"]["evidencias"])
+
+    def test_comando_eco_aula_incompleto_rejeitado(self):
+        mensagem = """
+Data: 2026-06-11
+Disciplina: Português
+Turma: 2º Ano
+Tema: Leitura coletiva
+"""
+
+        with self.assertRaises(ValueError) as contexto:
+            main.criar_registro_eco_aula(mensagem)
+
+        self.assertIn("DESENVOLVIMENTO", str(contexto.exception))
+        self.assertIn("MEMORIA FUTURA", str(contexto.exception))
+
     def test_modelo_aula_incompleto_rejeitado(self):
         mensagem = """
 [SISTEMA]: TRABALHO
@@ -338,6 +413,23 @@ class TestMIM(unittest.TestCase):
             self.assertEqual(caminho_inbox.read_text(encoding="utf-8"), "")
             dados = json.loads(caminho_dados.read_text(encoding="utf-8"))
             self.assertEqual(dados[0]["origem"], "inbox_rapida")
+
+    def test_processar_inbox_preview_nao_salva_nem_limpa(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            caminho_inbox = Path(temp_dir) / "inbox.txt"
+            caminho_dados = Path(temp_dir) / "registros.json"
+            caminho_inbox.write_text("IDEIA: Registrar pela inbox é mais rápido.\n", encoding="utf-8")
+
+            resultado = main.processar_inbox(
+                caminho_inbox,
+                caminho_dados,
+                data_hora=datetime(2026, 6, 5, 11, 0, 0),
+                salvar=False,
+            )
+
+            self.assertEqual(len(resultado["salvos"]), 1)
+            self.assertFalse(caminho_dados.exists())
+            self.assertNotEqual(caminho_inbox.read_text(encoding="utf-8"), "")
 
     def test_relatorio_inclui_registros_de_inbox_e_campos_de_aula(self):
         with tempfile.TemporaryDirectory() as temp_dir:

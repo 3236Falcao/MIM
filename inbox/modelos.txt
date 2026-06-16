@@ -46,22 +46,38 @@ MODELO PLANEJAMENTO
 [MEMÓRIA FUTURA]:
 
 
-MODELO AULA
+COMANDO ECO - REGISTRAR AULA
 
-[SISTEMA]:
-[TIPO]: AULA
-[TÍTULO]:
-[DATA]: AAAA-MM-DD
-[DESCRIÇÃO]:
-[IMPACTO]:
-[APRENDIZADO]:
-[MEMÓRIA FUTURA]:
-[DISCIPLINA]:
-[TURMA]:
-[TEMA]:
-[OBJETIVO]:
-[O QUE ACONTECEU]:
-[EVIDÊNCIAS]:
-[DESCOBERTAS]:
-[HIPÓTESE PEDAGÓGICA]:
-[INTERVENÇÃO FUTURA]:
+Quero registrar um Caso Pedagógico ECO.
+
+Data:
+Disciplina:
+Turma:
+Tema:
+
+Desenvolvimento:
+(O que foi realizado?)
+
+Evidências:
+
+* Autônomos:
+* Com orientações:
+* Com ajuda direta:
+* Avanços observados:
+* Dificuldades persistentes:
+* Episódios significativos:
+
+Intervenções:
+(O que foi feito pedagogicamente e comportamentalmente?)
+
+Síntese investigativa:
+(O que esta aula ensinou sobre como os alunos aprendem?)
+
+Memória futura:
+(O que devo lembrar para as próximas aulas?)
+
+Salve como:
+categoria: experiencia
+sistema: TRABALHO
+tipo_registro: AULA
+origem: registro_eco
