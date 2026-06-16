@@ -1,0 +1,24 @@
+{
+  "tipos_atividade": [
+    {
+      "codigo": "ditado_oral",
+      "nome": "Ditado oral",
+      "descricao": "Escrita produzida a partir de palavra falada pelo professor."
+    },
+    {
+      "codigo": "associacao_imagem",
+      "nome": "Associação imagem-escrita",
+      "descricao": "Escrita produzida a partir da identificação de uma imagem."
+    },
+    {
+      "codigo": "banco_palavras",
+      "nome": "Banco de palavras",
+      "descricao": "Escrita vinculada ao banco temático de palavras construído com a turma."
+    },
+    {
+      "codigo": "texto_livre",
+      "nome": "Texto livre",
+      "descricao": "Produção escrita espontânea ou autoral."
+    }
+  ]
+}
