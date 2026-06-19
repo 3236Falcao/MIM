@@ -207,3 +207,15 @@ Essa descoberta marca a transição do MIM de um sistema de registros genéricos
 **Descrição:** Pequenos registros realizados próximos ao momento em que a evidência ocorre tendem a preservar melhor os detalhes da aprendizagem, reduzindo a sobrecarga cognitiva do professor e aumentando a qualidade das informações registradas.
 
 **Impacto no projeto:** O MIM deve incentivar registros espaçados, rápidos e contextualizados, transformando fragmentos de observação em memória pedagógica organizada ao longo do tempo.
+
+---
+
+## Descoberta 21
+
+**Data:** 2026-06-19
+
+**Título:** A sistematização do conhecimento é inferida pelas evidências de aprendizagem.
+
+**Descrição:** O ensino pode ser registrado pela descrição das atividades realizadas, mas a aprendizagem precisa ser identificada por evidências observáveis produzidas pelos estudantes. A sistematização do conhecimento manifesta-se em comportamentos, explicações, produções, transferências, aplicações e demonstrações de compreensão construídas ao longo do processo educativo.
+
+**Impacto no projeto:** O MIM deve priorizar registros de evidências de aprendizagem em vez de limitar-se à descrição das atividades executadas. O sistema deve ajudar o professor a compreender não apenas o que foi ensinado, mas quais evidências indicam que ocorreu apropriação, consolidação ou avanço das aprendizagens.

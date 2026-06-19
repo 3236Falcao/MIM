@@ -1,8 +1,10 @@
-# MIM
+# MIM — Mentor Inteligente Modular
 
-MIM é um diário inteligente local e uma prótese cognitiva pessoal. Ele registra experiências, decisões, aprendizados, memórias futuras e acontecimentos relevantes dos sistemas da vida.
+MIM é um sistema local de memória reflexiva e uma prótese cognitiva pessoal. Ele registra experiências, decisões, aprendizados, memórias futuras e acontecimentos relevantes dos sistemas da vida.
 
-A proposta do MIM é ajudar a observar, interpretar, decidir, agir e memorizar com mais continuidade, mantendo os dados localmente em JSON.
+Sua função é transformar observações em conhecimento acumulado: organizar experiências, identificar padrões e apoiar processos de aprendizagem, pesquisa e tomada de decisão.
+
+> MIM é uma memória organizada que aprende com a experiência.
 
 Versão atual: **v0.4**
 
@@ -52,6 +54,10 @@ mim/
 - [Roadmap](docs/ROADMAP.md)
 - [Changelog](docs/CHANGELOG.md)
 - [Descobertas](docs/DESCOBERTAS.md)
+- [Linha do tempo do MIM](docs/LINHA_DO_TEMPO_MIM.md)
+- [EcoSíntese: base metodológica](docs/ecosintese/ECOSINTESE_PEDAGOGIA_DOS_ECOSSISTEMAS.md)
+- [Guia de Estudos EcoSíntese 2.0](docs/ecosintese/GUIA_DE_ESTUDOS_ECOSINTESE_2_0.md)
+- [Programa de Pesquisa e Desenvolvimento da EcoSíntese](docs/ecosintese/PROGRAMA_DE_PESQUISA_E_DESENVOLVIMENTO.md)
 
 ## Privacidade
 

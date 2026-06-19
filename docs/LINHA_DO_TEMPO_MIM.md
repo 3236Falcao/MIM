@@ -124,7 +124,11 @@ O valor do registro está na inteligência devolvida ao professor.
 
 Micro-registros frequentes produzem memória pedagógica mais fiel que relatórios extensos ao final do dia.
 
-**Marco:** consolidação do MIM como sistema de inteligência pedagógica e memória docente.
+### Descoberta 21
+
+A sistematização do conhecimento é inferida pelas evidências de aprendizagem.
+
+**Marco:** consolidação do MIM como sistema de inteligência pedagógica, memória docente e observação das evidências de aprendizagem.
 
 ---
 
@@ -137,12 +141,14 @@ Micro-registros frequentes produzem memória pedagógica mais fiel que relatóri
 - Observação
 - Evidências
 - Relatórios ECO
+- Sistematização baseada em evidências
 
 ### EcoSíntese
 
 - Base epistemológica
 - Observação orgânica do desenvolvimento
 - Intervenções baseadas em evidências
+- Aprendizagem observada por evidências
 
 ### EcoLeitor
 
@@ -153,3 +159,15 @@ Micro-registros frequentes produzem memória pedagógica mais fiel que relatóri
 - Relatórios automáticos
 - GitHub ativo
 - Primeira coleta real concluída
+
+### Princípios Estruturantes
+
+- A observação antecede a intervenção.
+- A evidência antecede a classificação.
+- O erro é uma evidência do percurso.
+- O julgamento pedagógico permanece humano.
+- O contexto altera o significado da evidência observada.
+- A tecnologia amplia a capacidade do professor.
+- O valor do registro está na inteligência devolvida.
+- Micro-registros produzem memória pedagógica mais fiel.
+- A sistematização do conhecimento é inferida pelas evidências de aprendizagem.
