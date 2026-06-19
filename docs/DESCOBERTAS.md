@@ -173,3 +173,37 @@ Essa descoberta marca a transição do MIM de um sistema de registros genéricos
 **Descrição:** A mediação por imagens permitiu identificar evidências relevantes sobre reconhecimento lexical, nomeação e hipóteses de escrita antes mesmo do início do piloto dos ditados orais.
 
 **Impacto no projeto:** O EcoLeitor deve considerar atividades de associação imagem-escrita como instrumentos legítimos de observação diagnóstica e acompanhamento pedagógico.
+
+## Descoberta 18
+
+**Data:** 2026-06-19
+
+**Título:** A tecnologia educacional deve ampliar a capacidade do professor, não substituí-lo.
+
+**Descrição:** A análise de experiências internacionais e das necessidades reais da prática docente indica que os melhores resultados educacionais surgem quando a tecnologia reduz burocracias, organiza informações e amplia a capacidade de observação e tomada de decisão do professor, sem substituir seu julgamento pedagógico.
+
+**Impacto no projeto:** O MIM deve ser desenvolvido como uma ferramenta de inteligência pedagógica capaz de apoiar a reflexão, a organização e a análise das evidências de aprendizagem, preservando o protagonismo docente.
+
+---
+
+## Descoberta 19
+
+**Data:** 2026-06-19
+
+**Título:** O valor do registro está na inteligência devolvida ao professor.
+
+**Descrição:** O professor não retorna diariamente a um sistema apenas para armazenar informações. O retorno ocorre quando os registros geram percepções úteis sobre os alunos, a turma e a prática pedagógica.
+
+**Impacto no projeto:** O MIM deve priorizar devolutivas significativas, tendências, evidências e hipóteses pedagógicas em vez de atuar apenas como repositório de dados.
+
+---
+
+## Descoberta 20
+
+**Data:** 2026-06-19
+
+**Título:** Micro-registros frequentes produzem memória pedagógica mais fiel que relatórios extensos ao final do dia.
+
+**Descrição:** Pequenos registros realizados próximos ao momento em que a evidência ocorre tendem a preservar melhor os detalhes da aprendizagem, reduzindo a sobrecarga cognitiva do professor e aumentando a qualidade das informações registradas.
+
+**Impacto no projeto:** O MIM deve incentivar registros espaçados, rápidos e contextualizados, transformando fragmentos de observação em memória pedagógica organizada ao longo do tempo.
