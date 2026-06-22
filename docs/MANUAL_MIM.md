@@ -117,6 +117,15 @@ A síntese lê os registros da data atual e mostra:
 
 Se não houver registros no dia, o MIM informa isso no terminal.
 
+Quando a síntese do dia trouxer encaminhamentos pedagógicos relevantes, ela também pode ser preservada como registro estruturado em `data/registros.json` com:
+
+- `sistema: TRABALHO`
+- `tipo_registro: SÍNTESE`
+- `origem: registro_eco`
+- `data` do dia observado
+
+Use esse formato para consolidar evidências, hipóteses e próximos passos de um conjunto de aulas sem substituir os registros individuais de cada aula.
+
 ## Inbox Universal
 
 A inbox fica em:
