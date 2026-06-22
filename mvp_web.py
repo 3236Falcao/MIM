@@ -72,41 +72,19 @@ HTML = """<!doctype html>
 
     .brand {
       display: grid;
-      gap: 2px;
+      gap: 4px;
     }
 
     h1 {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 1.6rem;
       letter-spacing: 0;
     }
 
     .brand-short {
       color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 750;
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .nav-button {
-      min-height: 40px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
       font-size: 0.92rem;
-      font-weight: 750;
-    }
-
-    .nav-button.active {
-      border-color: var(--primary);
-      background: var(--primary);
-      color: #fff;
+      font-weight: 650;
     }
 
     .status {
@@ -121,6 +99,14 @@ HTML = """<!doctype html>
 
     section {
       margin: 0 0 18px;
+    }
+
+    .home-screen {
+      display: none;
+    }
+
+    .home-screen.active {
+      display: block;
     }
 
     .panel {
@@ -232,6 +218,19 @@ HTML = """<!doctype html>
       font-size: 1.02rem;
     }
 
+    .hero-card {
+      padding: 20px;
+    }
+
+    .hero-card h2 {
+      font-size: 1.35rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-card .intro {
+      margin: 0 0 10px;
+    }
+
     .time-note {
       margin: 12px 0 0;
       color: var(--primary-dark);
@@ -239,9 +238,60 @@ HTML = """<!doctype html>
       font-weight: 750;
     }
 
+    .mode-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mode-card {
+      display: grid;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 14px;
+    }
+
+    .mode-card h3 {
+      margin: 0 0 4px;
+      font-size: 1.04rem;
+      letter-spacing: 0;
+    }
+
+    .mode-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .mode-card button {
+      justify-self: start;
+      width: auto;
+      min-width: 180px;
+    }
+
     .primary-cta {
-      min-height: 58px;
-      font-size: 1.08rem;
+      min-height: 64px;
+      margin-top: 16px;
+      font-size: 1.14rem;
+      background: var(--primary);
+      box-shadow: 0 8px 20px rgba(23, 107, 91, 0.18);
+    }
+
+    .secondary-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .secondary-nav button {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      background: #ecefeb;
+      color: var(--text);
+      font-size: 0.94rem;
     }
 
     .principles {
@@ -282,6 +332,19 @@ HTML = """<!doctype html>
       font-size: 0.98rem;
     }
 
+    .today-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .today-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
     .meta {
       color: var(--muted);
       font-size: 0.86rem;
@@ -309,14 +372,22 @@ HTML = """<!doctype html>
       .topbar,
       .row,
       .actions,
-      nav {
+      .secondary-nav {
         grid-template-columns: 1fr;
         flex-direction: column;
         align-items: stretch;
       }
 
       h1 {
-        font-size: 1.12rem;
+        font-size: 1.45rem;
+      }
+
+      .hero-card {
+        padding: 16px;
+      }
+
+      .mode-card button {
+        width: 100%;
       }
     }
   </style>
@@ -326,26 +397,23 @@ HTML = """<!doctype html>
     <div class="wrap">
       <div class="topbar">
         <div class="brand" aria-label="Memória Inteligente de Aprendizagem">
-          <h1>Memória Inteligente de Aprendizagem</h1>
-          <span class="brand-short">MIM</span>
+          <h1>MIM</h1>
+          <span class="brand-short">Memória Inteligente de Aprendizagem</span>
         </div>
       </div>
-      <nav aria-label="Telas do MIM">
-        <button class="nav-button" type="button" data-screen="registro">+ Registrar Aula</button>
-        <button class="nav-button" type="button" data-screen="lista">Ver Registros</button>
-        <button class="nav-button" type="button" data-screen="sobre">Sobre o MIM</button>
-        <button class="nav-button" type="button" data-screen="ferramentas">Ferramentas</button>
-      </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="inicio" class="panel screen active">
-      <h2>Bem-vindo ao MIM</h2>
-      <p class="intro">Registre rapidamente evidências da sua aula. O MIM ajuda a transformar observações em memória pedagógica.</p>
-      <p class="time-note">⏱ Menos de 1 minuto</p>
-      <div class="actions">
+    <section id="inicio" class="home-screen screen active">
+      <div class="panel hero-card">
+        <h2>Bem-vindo ao MIM</h2>
+        <p class="intro">Registre rapidamente evidências da sua aula.</p>
+        <p class="intro">O MIM ajuda a transformar observações em memória pedagógica.</p>
+        <p class="time-note">⏱ Menos de 1 minuto</p>
         <button class="primary-cta" type="button" data-screen="registro">+ Registrar Aula</button>
+      </div>
+      <div class="secondary-nav" aria-label="Navegação secundária">
         <button class="secondary" type="button" data-screen="lista">Ver Registros</button>
         <button class="secondary" type="button" data-screen="sobre">Sobre o MIM</button>
         <button class="secondary" type="button" data-screen="ferramentas">Ferramentas</button>
@@ -353,43 +421,64 @@ HTML = """<!doctype html>
     </section>
 
     <section id="registro" class="panel screen">
-      <h2>Registro rápido</h2>
-      <form id="registro-form">
-        <div class="row">
+      <h2>Como você quer observar hoje?</h2>
+      <div class="mode-grid" id="modo-escolha">
+        <article class="mode-card">
           <div>
-            <label for="perfil">Perfil opcional</label>
-            <select id="perfil" name="perfil">
-              <option value="">Não informar</option>
-              <option>Professor</option>
-              <option>Estudante</option>
-              <option>Coordenação</option>
-              <option>Família</option>
-            </select>
+            <h3>Observação Essencial</h3>
+            <p>Registrar uma observação principal da aula.</p>
           </div>
+          <button type="button" data-mode="essencial">Escolher modo essencial</button>
+        </article>
+        <article class="mode-card">
           <div>
-            <label for="turma">Turma opcional</label>
-            <input id="turma" name="turma" placeholder="Ex.: 8A">
+            <h3>Observação Investigativa</h3>
+            <p>Registrar múltiplas evidências ao longo do dia.</p>
           </div>
-        </div>
+          <button type="button" data-mode="investigativa">Escolher modo investigativo</button>
+        </article>
+      </div>
 
-        <label for="titulo">Título opcional</label>
-        <input id="titulo" name="titulo" maxlength="80" placeholder="Ex.: Leitura em duplas">
+      <form id="essencial-form" hidden>
+        <label for="foco">Foco de observação</label>
+        <select id="foco" name="foco" required>
+          <option value="">Escolha um foco</option>
+          <option>Leitura</option>
+          <option>Escrita</option>
+          <option>Participação</option>
+          <option>Comportamento</option>
+          <option>Grupo A</option>
+          <option>Grupo B</option>
+          <option>Grupo C</option>
+          <option>Outro</option>
+        </select>
 
-        <label for="observacao">O que aconteceu?</label>
-        <textarea id="observacao" name="observacao" maxlength="900" placeholder="Registre em poucas frases." required></textarea>
-
-        <label for="evidencias">Evidências observadas opcionais</label>
-        <textarea id="evidencias" name="evidencias" maxlength="700" placeholder="Ex.: participação, dúvida recorrente, fala de aluno, produção entregue."></textarea>
-
-        <label for="feedback">O que você mudaria no MIM?</label>
-        <textarea id="feedback" name="feedback" maxlength="600" placeholder="Sugestão, dificuldade ou melhoria percebida."></textarea>
+        <label for="observacao-essencial">O que você observou?</label>
+        <textarea id="observacao-essencial" name="observacao" maxlength="900" required></textarea>
 
         <div class="actions">
-          <button type="submit">Salvar registro</button>
-          <button class="secondary" type="button" id="limpar">Limpar</button>
+          <button type="submit">Salvar registro essencial</button>
+          <button class="secondary" type="button" data-voltar-modos>Voltar</button>
         </div>
-        <p class="status" id="status" aria-live="polite"></p>
       </form>
+
+      <div id="investigativa-form" hidden>
+        <label for="observacao-investigativa">Registrar observação</label>
+        <textarea id="observacao-investigativa" maxlength="900"></textarea>
+
+        <div class="actions">
+          <button type="button" id="salvar-observacao-investigativa">+ Salvar observação</button>
+          <button class="secondary" type="button" data-voltar-modos>Voltar</button>
+        </div>
+
+        <h2>Registros de hoje</h2>
+        <div id="registros-hoje" class="today-list">
+          <div class="empty">Nenhuma observação registrada hoje.</div>
+        </div>
+
+        <button type="button" id="finalizar-investigativa">Finalizar observações do dia</button>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
     </section>
 
     <section class="panel screen" id="lista">
@@ -405,6 +494,7 @@ HTML = """<!doctype html>
       <p class="intro">O professor inicia sua prática observando as evidências de aprendizagem e, a partir delas, realiza mediações que favorecem o desenvolvimento dos estudantes.</p>
       <ol class="principles">
         <li>O professor inicia sua prática observando as evidências de aprendizagem e, a partir delas, realiza mediações que favorecem o desenvolvimento dos estudantes.</li>
+        <li>O MIM adapta-se ao modo como o professor deseja observar: de forma essencial ou investigativa.</li>
         <li>A observação antecede a intervenção.</li>
         <li>A evidência antecede a classificação.</li>
         <li>O registro deve ser rápido, humano e significativo.</li>
@@ -423,14 +513,20 @@ HTML = """<!doctype html>
   </main>
 
   <script>
-    const form = document.querySelector("#registro-form");
+    const modoEscolha = document.querySelector("#modo-escolha");
+    const essencialForm = document.querySelector("#essencial-form");
+    const investigativaForm = document.querySelector("#investigativa-form");
+    const observacaoInvestigativaEl = document.querySelector("#observacao-investigativa");
+    const registrosHojeEl = document.querySelector("#registros-hoje");
+    const salvarObservacaoInvestigativaBtn = document.querySelector("#salvar-observacao-investigativa");
+    const finalizarInvestigativaBtn = document.querySelector("#finalizar-investigativa");
     const statusEl = document.querySelector("#status");
     const listaEl = document.querySelector("#registros");
     const contadorEl = document.querySelector("#contador");
-    const limparBtn = document.querySelector("#limpar");
     const limparRegistrosBtn = document.querySelector("#limpar-registros");
     const telas = document.querySelectorAll(".screen");
     const botoesTela = document.querySelectorAll("[data-screen]");
+    let observacoesInvestigativas = [];
 
     function abrirTela(id) {
       telas.forEach((tela) => {
@@ -454,6 +550,66 @@ HTML = """<!doctype html>
         .replaceAll("'", "&#039;");
     }
 
+    function mostrarEscolhaDeModo(mensagem = "") {
+      modoEscolha.hidden = false;
+      essencialForm.hidden = true;
+      investigativaForm.hidden = true;
+      statusEl.textContent = mensagem;
+    }
+
+    function horaAtual() {
+      return new Date().toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+    }
+
+    function renderizarRegistrosHoje() {
+      registrosHojeEl.innerHTML = "";
+      if (!observacoesInvestigativas.length) {
+        registrosHojeEl.innerHTML = '<div class="empty">Nenhuma observação registrada hoje.</div>';
+        return;
+      }
+
+      observacoesInvestigativas.forEach((observacao) => {
+        const item = document.createElement("div");
+        item.className = "today-item";
+        item.innerHTML = `
+          <div class="meta">${textoSeguro(observacao.hora)}</div>
+          <p>${textoSeguro(observacao.texto)}</p>
+        `;
+        registrosHojeEl.appendChild(item);
+      });
+    }
+
+    function tituloRegistro(registro) {
+      if (registro.modo === "observacao_essencial") {
+        return `Observação Essencial · ${registro.foco}`;
+      }
+      if (registro.modo === "observacao_investigativa") {
+        return "Observação Investigativa";
+      }
+      return registro.titulo || "Registro pedagógico";
+    }
+
+    function metaRegistro(registro) {
+      if (registro.modo === "observacao_investigativa") {
+        return `${registro.data} ${registro.hora_inicio} - ${registro.hora_finalizacao}`;
+      }
+      return `${registro.data} ${registro.hora}`;
+    }
+
+    function corpoRegistro(registro) {
+      if (registro.modo === "observacao_investigativa") {
+        const itens = (registro.observacoes || [])
+          .map((observacao) => `<p><strong>${textoSeguro(observacao.hora)}</strong> ${textoSeguro(observacao.texto)}</p>`)
+          .join("");
+        return `<p>${textoSeguro(registro.sintese)}</p>${itens}`;
+      }
+      return `<p>${textoSeguro(registro.observacao)}</p>`;
+    }
+
     function renderizar(registros) {
       contadorEl.textContent = `${registros.length} ${registros.length === 1 ? "registro" : "registros"}`;
       listaEl.innerHTML = "";
@@ -473,9 +629,9 @@ HTML = """<!doctype html>
           ? `<p><strong>Feedback:</strong> ${textoSeguro(registro.feedback_professor)}</p>`
           : "";
         artigo.innerHTML = `
-          <strong>${textoSeguro(registro.titulo)}</strong>
-          <div class="meta">${textoSeguro(registro.data)} ${textoSeguro(registro.hora)} · ${textoSeguro(registro.perfil)} · ${textoSeguro(registro.turma || "sem turma")}</div>
-          <p>${textoSeguro(registro.observacao)}</p>
+          <strong>${textoSeguro(tituloRegistro(registro))}</strong>
+          <div class="meta">${textoSeguro(metaRegistro(registro))}</div>
+          ${corpoRegistro(registro)}
           ${evidencias}
           ${feedback}
         `;
@@ -491,10 +647,26 @@ HTML = """<!doctype html>
       renderizar(await resposta.json());
     }
 
-    form.addEventListener("submit", async (evento) => {
+    document.querySelectorAll("[data-mode]").forEach((botao) => {
+      botao.addEventListener("click", () => {
+        modoEscolha.hidden = true;
+        essencialForm.hidden = botao.dataset.mode !== "essencial";
+        investigativaForm.hidden = botao.dataset.mode !== "investigativa";
+        statusEl.textContent = "";
+      });
+    });
+
+    document.querySelectorAll("[data-voltar-modos]").forEach((botao) => {
+      botao.addEventListener("click", mostrarEscolhaDeModo);
+    });
+
+    essencialForm.addEventListener("submit", async (evento) => {
       evento.preventDefault();
       statusEl.textContent = "Salvando...";
-      const dados = Object.fromEntries(new FormData(form).entries());
+      const dados = {
+        modo: "observacao_essencial",
+        ...Object.fromEntries(new FormData(essencialForm).entries()),
+      };
 
       const resposta = await fetch("/api/registros", {
         method: "POST",
@@ -508,14 +680,49 @@ HTML = """<!doctype html>
         return;
       }
 
-      form.reset();
-      statusEl.textContent = "Registro salvo localmente.";
+      essencialForm.reset();
       renderizar(corpo.registros);
+      mostrarEscolhaDeModo("Registro salvo localmente.");
     });
 
-    limparBtn.addEventListener("click", () => {
-      form.reset();
-      statusEl.textContent = "";
+    salvarObservacaoInvestigativaBtn.addEventListener("click", () => {
+      const texto = observacaoInvestigativaEl.value.trim();
+      if (!texto) {
+        statusEl.textContent = "Informe a observação.";
+        return;
+      }
+      observacoesInvestigativas.push({hora: horaAtual(), texto});
+      observacaoInvestigativaEl.value = "";
+      statusEl.textContent = "Observação adicionada.";
+      renderizarRegistrosHoje();
+    });
+
+    finalizarInvestigativaBtn.addEventListener("click", async () => {
+      if (!observacoesInvestigativas.length) {
+        statusEl.textContent = "Salve ao menos uma observação.";
+        return;
+      }
+
+      statusEl.textContent = "Finalizando...";
+      const resposta = await fetch("/api/registros", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          modo: "observacao_investigativa",
+          observacoes: observacoesInvestigativas,
+        }),
+      });
+
+      const corpo = await resposta.json();
+      if (!resposta.ok) {
+        statusEl.textContent = corpo.erro || "Erro ao finalizar.";
+        return;
+      }
+
+      observacoesInvestigativas = [];
+      renderizarRegistrosHoje();
+      renderizar(corpo.registros);
+      mostrarEscolhaDeModo(corpo.registro.sintese);
     });
 
     limparRegistrosBtn.addEventListener("click", async () => {
@@ -554,7 +761,7 @@ MANIFEST = {
     "theme_color": "#176b5b",
 }
 
-SERVICE_WORKER = """const CACHE = "mim-v1";
+SERVICE_WORKER = """const CACHE = "mim-v2";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(["/"])));
@@ -585,31 +792,95 @@ def salvar_registros(registros, caminho=DATA_FILE):
     caminho.write_text(json.dumps(registros, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def criar_registro_mvp(dados, data_hora=None):
+FOCOS_OBSERVACAO = (
+    "Leitura",
+    "Escrita",
+    "Participação",
+    "Comportamento",
+    "Grupo A",
+    "Grupo B",
+    "Grupo C",
+    "Outro",
+)
+
+
+def listar_registros(caminho=DATA_FILE):
+    return carregar_registros(caminho)
+
+
+def exportar_registros_json(caminho=DATA_FILE):
+    return json.dumps(listar_registros(caminho), ensure_ascii=False, indent=2)
+
+
+def limpar_registros(caminho=DATA_FILE):
+    salvar_registros([], caminho)
+    return []
+
+
+def criar_registro_essencial(dados, data_hora=None):
     if data_hora is None:
         data_hora = datetime.now()
 
-    titulo = dados.get("titulo", "").strip()
+    foco = dados.get("foco", "").strip()
+    if foco not in FOCOS_OBSERVACAO:
+        focos = ", ".join(FOCOS_OBSERVACAO)
+        raise ValueError(f"Escolha um foco de observação: {focos}.")
+
     observacao = dados.get("observacao", "").strip()
     if not observacao:
-        raise ValueError("Informe o que aconteceu.")
+        raise ValueError("Informe o que você observou.")
 
     return {
-        "categoria": "mvp_educativo",
-        "titulo": (titulo or "Registro pedagógico")[:80],
+        "modo": "observacao_essencial",
+        "foco": foco,
         "observacao": observacao[:900],
-        "evidencias": dados.get("evidencias", "").strip()[:700],
-        "feedback_professor": dados.get("feedback", "").strip()[:600],
-        "perfil": dados.get("perfil", "").strip() or "Não informado",
-        "turma": dados.get("turma", "").strip()[:40],
         "data": data_hora.strftime("%Y-%m-%d"),
         "hora": data_hora.strftime("%H:%M:%S"),
     }
 
 
-def adicionar_registro_mvp(dados, caminho=DATA_FILE, data_hora=None):
+def criar_registro_investigativo(dados, data_hora=None):
+    if data_hora is None:
+        data_hora = datetime.now()
+
+    observacoes = []
+    for item in dados.get("observacoes", []):
+        texto = str(item.get("texto", "")).strip()
+        if texto:
+            observacoes.append(
+                {
+                    "hora": str(item.get("hora") or data_hora.strftime("%H:%M:%S")).strip()[:8],
+                    "texto": texto[:900],
+                }
+            )
+
+    if not observacoes:
+        raise ValueError("Salve ao menos uma observação.")
+
+    quantidade = len(observacoes)
+    return {
+        "modo": "observacao_investigativa",
+        "observacoes": observacoes,
+        "quantidade_observacoes": quantidade,
+        "sintese": f"Hoje foram registradas {quantidade} observações.",
+        "data": data_hora.strftime("%Y-%m-%d"),
+        "hora_inicio": observacoes[0]["hora"],
+        "hora_finalizacao": data_hora.strftime("%H:%M:%S"),
+    }
+
+
+def criar_registro_mim(dados, data_hora=None):
+    modo = dados.get("modo", "").strip()
+    if modo == "observacao_essencial":
+        return criar_registro_essencial(dados, data_hora)
+    if modo == "observacao_investigativa":
+        return criar_registro_investigativo(dados, data_hora)
+    raise ValueError("Escolha um modo de observação.")
+
+
+def adicionar_registro_mim(dados, caminho=DATA_FILE, data_hora=None):
     registros = carregar_registros(caminho)
-    registro = criar_registro_mvp(dados, data_hora)
+    registro = criar_registro_mim(dados, data_hora)
     registros.append(registro)
     salvar_registros(registros, caminho)
     return registro, registros
@@ -622,7 +893,7 @@ class MIMHandler(BaseHTTPRequestHandler):
             self.responder(HTTPStatus.OK, HTML, "text/html; charset=utf-8")
             return
         if caminho == "/api/registros":
-            self.responder_json(HTTPStatus.OK, carregar_registros())
+            self.responder_json(HTTPStatus.OK, listar_registros())
             return
         if caminho == "/api/health":
             self.responder_json(HTTPStatus.OK, {"status": "ok", "app": "mim"})
@@ -634,8 +905,7 @@ class MIMHandler(BaseHTTPRequestHandler):
             self.responder(HTTPStatus.OK, SERVICE_WORKER, "text/javascript; charset=utf-8")
             return
         if caminho == "/export/registros.json":
-            registros = carregar_registros()
-            conteudo = json.dumps(registros, ensure_ascii=False, indent=2)
+            conteudo = exportar_registros_json()
             self.send_response(HTTPStatus.OK)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Disposition", 'attachment; filename="mim-registros.json"')
@@ -653,7 +923,7 @@ class MIMHandler(BaseHTTPRequestHandler):
         tamanho = int(self.headers.get("Content-Length", "0"))
         try:
             dados = json.loads(self.rfile.read(tamanho).decode("utf-8"))
-            registro, registros = adicionar_registro_mvp(dados)
+            registro, registros = adicionar_registro_mim(dados)
         except (json.JSONDecodeError, ValueError) as erro:
             self.responder_json(HTTPStatus.BAD_REQUEST, {"erro": str(erro)})
             return
@@ -666,8 +936,7 @@ class MIMHandler(BaseHTTPRequestHandler):
             self.responder_json(HTTPStatus.NOT_FOUND, {"erro": "Rota não encontrada."})
             return
 
-        salvar_registros([])
-        self.responder_json(HTTPStatus.OK, {"registros": []})
+        self.responder_json(HTTPStatus.OK, {"registros": limpar_registros()})
 
     def log_message(self, formato, *args):
         print("%s - %s" % (self.address_string(), formato % args))
