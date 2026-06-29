@@ -58,6 +58,7 @@ mim/
 - [EcoSíntese: base metodológica](docs/ecosintese/ECOSINTESE_PEDAGOGIA_DOS_ECOSSISTEMAS.md)
 - [Guia de Estudos EcoSíntese 2.0](docs/ecosintese/GUIA_DE_ESTUDOS_ECOSINTESE_2_0.md)
 - [Programa de Pesquisa e Desenvolvimento da EcoSíntese](docs/ecosintese/PROGRAMA_DE_PESQUISA_E_DESENVOLVIMENTO.md)
+- [Procedimento de Planejamento Pedagógico da EcoSíntese](docs/ecosintese/PROCEDIMENTO_PLANEJAMENTO_PEDAGOGICO.md)
 
 ## Privacidade
 
